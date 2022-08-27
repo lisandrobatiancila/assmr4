@@ -1,0 +1,44 @@
+:root{
+    --ddColor: #ddd;
+    --sysColor: #ec920b;
+}
+.card_content{
+    width: 32.9%;
+    display: inline-block;
+    box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--ddColor);
+    margin: 3px 0 3px 3px;
+}
+.card_header{
+    padding: 6px;
+}
+.card_header > div > img{
+    max-width: 100%;
+    height: auto;
+}
+.card_header > div > button{
+    background-color: var(--sysColor);
+    width: 100%;
+    text-transform: capitalize;
+}
+.card_header:hover{
+    cursor: pointer;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
+}
+.card_body{
+    padding: 5px;
+}
+.card_body > div > label{
+    display: block;
+    margin: 10px 0;
+}
+.card_body > div > label::first-letter{
+    text-transform: capitalize;
+}
+.card_body > div > div > button{
+    width: 100%;
+    text-transform: capitalize;
+}
+.card_body > div > div > button:hover{
+    background-color: var(--ddColor);
+}

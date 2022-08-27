@@ -1,0 +1,35 @@
+.feedback_container{
+    border: 1px solid var(--ddColor);
+    border-radius: 3px;
+    padding: 10px;
+}
+.open_modal{
+    display: block;
+    position: fixed;
+    width: 0;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: width 2s;
+}
+.open_modal{
+    width: 100%;
+}
+.close_modal{
+    display: none;
+}
+.toggle_feedback{
+    text-align: center;
+}
+.toggle_feedback > button{
+    text-transform: capitalize;
+    background-color: #46bbff;
+    padding: 15px 12px;
+    box-shadow: 0 10px 4px 0 rgba(0, 0, 0, 0.3);
+    font-weight: 700;
+}
+.toggle_feedback > button:active{
+    transform: translateY(-3px);
+}

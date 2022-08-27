@@ -1,0 +1,93 @@
+:root{
+    --whiteColor: #fff;
+    --blackColor: #000;
+    --navColor: #ec920b;
+    --ddColor: #ddd;
+}
+.mainNav nav{
+    background-color: var(--navColor);
+    padding: 20px 15px;
+    overflow: auto;
+}
+.mainNav nav ul{
+    list-style-type: none;
+}
+.mainNav nav a{
+    /* text-decoration: none; */
+    color: var(--whiteColor);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+}
+.mainNav nav ul li:first-child{
+    float: left;
+}
+.mainNav nav ul li{
+    float: right;
+    padding: 10px 15px;
+}
+/* .mainNav nav ul li div span::before{
+    content: ' \26D1';
+    color: var(--whiteColor);
+    padding: 0 12px 0 0;
+} */
+.mainNav nav ul li a:hover{
+    border-bottom: 2px solid var(--whiteColor);
+}
+.drop_down_user > .drop_down_content_user{
+    display: none;
+    position: absolute;
+    background-color: var(--whiteColor);
+    padding: 10px;
+    border: 1px solid var(--navColor);
+    right: 10px;
+    z-index: 1;
+}
+.drop_down_user > .drop_down_content_user > a{
+    display: block;
+    color: var(--blackColor);
+}
+.drop_down_user > .drop_down_content_user > a:hover{
+    border-bottom: 1px solid var(--navColor);
+}
+.drop_down_browse_property > .drop_down_content_browse_property{
+    display: none;
+    position: absolute;
+    background-color: var(--whiteColor);
+    padding: 10px;
+    border: 1px solid var(--navColor);
+    z-index: 1;
+}
+.drop_down_browse_property > .drop_down_content_browse_property > a{
+    display: block;
+    color: var(--blackColor);
+}
+.drop_down_browse_property > .drop_down_content_browse_property > a:hover{
+    border-bottom: 1px solid var(--navColor);
+}
+nav ul li .drop_down_user:hover .drop_down_content_user{
+    display: block;
+}
+nav ul li .drop_down_browse_property:hover .drop_down_content_browse_property{
+    display: block;
+}
+/* nav ul li div div *{
+    display: block;
+}
+nav ul li div div{
+    position: absolute;
+    display: none;
+    background-color: var(--whiteColor);
+    padding: 10px;
+    right: 20px;
+    border: 1px solid var(--navColor);
+}
+nav ul li div div a{
+    color: var(--blackColor);
+}
+nav ul li div div a:hover{
+    border-bottom: 1px solid var(--navColor);
+}
+nav ul li div:hover div{
+    display: block;
+} */

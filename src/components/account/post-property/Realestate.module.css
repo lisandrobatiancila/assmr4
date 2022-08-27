@@ -1,0 +1,57 @@
+.realestate_content *{
+    display: block;
+}
+.realestate_content{
+    width: 33.33%;
+    display: inline-block;
+    padding: 5px;
+}
+.realestate_content > label{
+    text-transform: capitalize;
+    margin: 5px 0;
+}
+.realestate_content > input, select{
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 12px 10px;
+}
+select{
+    text-transform: capitalize;
+}
+.realestate_images > *{
+    display: block;
+}
+.realestate_images > label{
+    text-transform: capitalize;
+    margin: 5px 0;
+}
+.realestate_images > input{
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 12px 10px;
+}
+.realestate_buttons{
+    width: 500px;
+    margin: 10px auto 0 auto;
+}
+.realestate_buttons > button{
+    width: 45%;
+    display: inline-block;
+    cursor: pointer;
+    padding: 12px 0;
+    text-align: center;
+    text-transform: capitalize;
+    margin: 0 5px;
+}
+.realestate_buttons > button:not(:first-child){
+    border: 1px solid #ec920b;
+    background-color: #fff;
+}
+.realestate_buttons > button:not(:first-child):hover{
+    background-color: #ec920b;
+}
+.realestate_buttons > button:not(:first-child):active{
+    transform: translateY(-3px);
+}

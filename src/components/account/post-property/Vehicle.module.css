@@ -1,0 +1,45 @@
+.vehicle_container > form label, input{
+    display: block;
+}
+.vehicle_container > form > div > label{
+    text-transform: capitalize;
+    margin: 5px 0;
+}
+.vehicle_container > form > .vehicle_content{
+    width: 33.33%;
+    display: inline-block;
+    padding: 5px;
+}
+.vehicle_container > form > div > input{
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 12px 10px;
+}
+.vehicle_container > form .vehicle_buttons{
+    max-width: 500px;
+    margin: 10px auto 0 auto;
+}
+.vehicle_container > form .vehicle_buttons button{
+    width: 45%;
+    display: inline-block;
+    cursor: pointer;
+    padding: 12px 0;
+    text-align: center;
+    text-transform: capitalize;
+    margin: 0 5px;
+}
+.vehicle_container > form .vehicle_buttons button:not(:first-child){
+    border: 1px solid #ec920b;
+    background-color: #fff;
+}
+.vehicle_container > form .vehicle_buttons button:not(:first-child):hover{
+    background-color: #ec920b;
+}
+.vehicle_container > form .vehicle_buttons button:not(:first-child):active{
+    transform: translateY(-3px);
+}
+.vehicle_container > form > .vehicle_content > label >.err_validation{
+    color: #f05901;
+    background-color: aqua;
+}

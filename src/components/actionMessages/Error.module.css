@@ -1,0 +1,13 @@
+.error_container{
+    position: relative;
+    width: 500px;
+    margin: 0 auto;
+    text-align: center;
+    top: 20px
+}
+.error_container ::first-letter{
+    text-transform: capitalize;
+}
+.error_header{
+    padding: 12px 0;
+}

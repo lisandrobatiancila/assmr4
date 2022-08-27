@@ -1,0 +1,49 @@
+:root{
+    --ddColor: #ddd;
+    --whiteColor: #fff;
+}
+.realestate_content_container{
+    padding: 5px;
+}
+.realestate_content{
+    width: 33.33%;
+    display: inline-block;
+    border: 1px solid var(--ddColor);
+}
+.realestate_content > .realestate_head{
+    border: 1px solid var(--ddColor);
+}
+.realestate_content > .realestate_body{
+    padding: 10px;
+}
+.realestate_content > .realestate_body > label{
+    display: block;
+    margin: 5px 0;
+}
+.realestate_content > .realestate_body > label::first-letter{
+    text-transform: capitalize;
+}
+.realestate_nav{
+    background-color: #000;
+    text-transform: capitalize;
+    overflow: auto;
+    padding: 20px 30px;
+}
+a{
+    text-decoration: none;
+}
+.realestate_nav > ul{
+    list-style-type: none;
+}
+.realestate_nav > ul li{
+    float: right;
+}
+.realestate_nav > ul li a{
+    padding: 0 10px;
+    color: var(--whiteColor);
+    font-weight: bold;
+    letter-spacing: .5px;
+}
+.realestate_nav > ul li a:hover{
+    border-bottom: 1px solid #ec920b;
+}

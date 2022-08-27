@@ -1,0 +1,76 @@
+:root{
+    --whiteColor: #fff;
+    --blackColor: #000;
+    --navColor: #ec920b;
+    --ddColor: #ddd;
+    --messageColor: #064158;
+    --notificationColor: #916107;
+}
+.account_nav nav{
+    background-color: var(--navColor);
+    padding: 20px 15px;
+    overflow: auto;
+    position: fixed;
+    width: 100%;
+    top: 0;
+}
+.account_nav > nav > .nav{
+    display: inline-block;
+    margin-left: 190px;
+}
+.account_nav > nav .nav ul{
+    list-style-type: none;
+}
+.account_nav > nav .nav ul li{
+    float: left;
+    margin: 0 10px;
+}
+.account_main_section_add_200{
+    margin-left: 200px;
+    padding-top: 100px;
+}
+.account_main_section_min_200{
+    margin-left: 0;
+    padding-top: 100px;
+}
+.account_nav > nav a{
+    color: var(--whiteColor);
+}
+.account_nav > nav:first-child > a{
+    font-size: 25px;
+}
+.account_nav > nav .nav{
+    font-size: 20px;
+}
+.account_nav > nav > .nav .dropdown{
+    position: relative;
+    border: 1px solid var(--ddColor);
+    border-radius: 4px;
+    padding: 3px;
+    background-color: var(--sidenavColor)
+}
+.badge{
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: -15px;
+    right: -12px;
+    background-color: var(--whiteColor);
+    color: var(--blackColor);
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    padding: 4px;
+    font-size: 15px;
+    text-align: center;
+    line-height: 10px;
+}
+.b_message{
+    background-color: var(--messageColor);
+    color: var(--whiteColor)
+}
+.b_notification{
+    background-color: var(--notificationColor);
+    color: var(--whiteColor)
+}

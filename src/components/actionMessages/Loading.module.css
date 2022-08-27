@@ -1,0 +1,22 @@
+:root{
+    --ddColor: #ddd;
+    --navColor: #ec920b;
+    --whiteColor: #fff;
+}
+.loading_container{
+    background-color: var(--whiteColor);
+    border-top: 5px solid var(--ddColor);
+    border-left: 5px solid var(--ddColor);
+    border-right: 5px solid var(--navColor);
+    border-bottom: 5px solid var(--ddColor);
+    border-radius: 50%;
+    animation: animate_loading_screen 1s ease-in-out infinite;
+}
+@keyframes animate_loading_screen {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}

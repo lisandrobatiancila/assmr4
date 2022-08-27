@@ -1,0 +1,34 @@
+.chat_message_right_container{
+    overflow: auto;
+    padding: 5px;
+    display: block;
+}
+.chat_message_right_content{
+    float: right;
+}
+.avatar_active{
+    float: right;
+}
+.active_message{
+    line-height: 50px;
+    border: 1px solid var(--ddColor);
+    border-radius: 4px;
+    padding: 5px;
+    margin-right: 5px;
+}
+.chat_message_left_container{
+    padding: 5px;
+    overflow: auto;
+    display: block;
+}
+.avatar_passive{
+    float: left;
+}
+.passive_message{
+    line-height: 50px;
+    border: 1px solid var(--ddColor);
+    border-radius: 4px;
+    padding: 5px;
+    margin-left: 5px;
+    min-width: 500px;
+}

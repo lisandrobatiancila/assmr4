@@ -1,0 +1,110 @@
+:root{
+    --borderColor: #ec920b;
+    --whiteColor: #fff;
+    --blackColor: #000;
+}
+.project_description{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    width: 700px;
+    margin: 100px auto;
+    text-align: center;
+    overflow: auto;
+}
+.project_description *{
+    padding: 10px 0;
+}
+.group_name{
+    text-transform: uppercase;
+    font-size: 15px;
+}
+.description{
+    text-transform: uppercase;
+    font-size: 20px;
+}
+.supporting_description{
+    font-size: 18px;
+}
+.supporting_description > h4 span:first-child{
+    text-transform: uppercase;
+}
+.supporting_description > h4{
+    text-transform: capitalize;
+}
+.bottom_container button{
+    width: 25%;
+    height: 45px;
+    cursor: pointer;
+    border: 1px solid var(--ddColor);
+    border-top-width: 2px;
+    margin: 0 12px;
+    border-top-left-radius: 100px;
+    border-top-right-radius: 100px;
+    border-bottom-left-radius: 100px;
+    border-bottom-right-radius: 100px;
+    text-transform: uppercase;
+    background-color: var(--navColor);
+    font-weight: bold;
+}
+.bottom_container button:hover{
+    box-shadow: 0px 2px 6px 2px rgba(0, 0, 0, 0.5);
+}
+.button_post_property > button{
+    width: 30%;
+    cursor: pointer;
+    text-transform: capitalize;
+    font-size: 16px;
+    border: 1px solid var(--borderColor);
+    padding: 12px 0px;
+}
+.button_post_property > button:active{
+    transform: translateY(-3px);
+}
+.modal_container{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+}
+.modal_container > .modal_content{
+    width: 50%;
+    margin: 100px auto 0 auto;
+    background-color: var(--whiteColor);
+    border: 1px solid var(--ddColor);
+    border-radius: 4px;
+}
+.modal_content > .modal_header{
+    background-color: var(--borderColor);
+    padding: 12px 15px;
+    text-transform: capitalize;
+}
+.modal_body *{
+    display: block;
+    text-transform: capitalize;
+}
+.modal_body label{
+    margin: 12px 0;
+}
+.modal_content > .modal_body{
+    padding: 12px 15px;
+}
+.modal_body select{
+    width: 100%;
+    border: 1px solid var(--ddColor);
+    border-radius: 4px;
+    padding: 12px 10px;
+}
+.close{
+    float: right;
+    position: relative;
+    font-weight: bold;
+    color: var(--whiteColor);
+    cursor: pointer;
+    font-size: 30px;
+    top: -10px
+}
+.close:active{
+    transform: translateY(-3px);
+}

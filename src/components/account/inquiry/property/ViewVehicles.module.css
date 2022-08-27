@@ -1,0 +1,59 @@
+:root{
+    --ddColor: #ddd;
+    --sysColor: #ec920b;
+    --infoCOlor: #ff7402;
+    --whiteColor: #fff;
+}
+/* .vehicle_container{
+    padding: 5px;
+} */
+.vehicle_content_container{
+    display: inline-block;
+    width: 33.33%;
+    padding: 6px;
+}
+.vehicle_content_container > .vehicle_content{
+    border: 1px solid var(--ddColor);
+    padding: 3px;
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.5);
+}
+.vehicle_content_container > .vehicle_content > .vehicle_header{
+    padding: 3px;
+}
+.vehicle_content_container > .vehicle_content > .vehicle_header:hover{
+    box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+.vehicle_header > button{
+    width: 100%;
+    background-color: var(--sysColor);
+    text-transform: capitalize;
+}
+.vehicle_header > img{
+    max-width: 100%;
+    height: auto;
+}
+.vehicle_content_container > .vehicle_content > .vehicle_body{
+    display: block;
+    padding: 10px;
+}
+.vehicle_content_container > .vehicle_content > .vehicle_body label{
+    display: block;
+    margin: 5px 0;
+}
+.vehicle_content_container > .vehicle_content > .vehicle_body label::first-letter{
+    text-transform: capitalize;
+}
+.vehicle_body > div > button{
+    width: 100%;
+    background-color: var(--whiteColor);
+    text-transform: capitalize;
+}
+.vehicle_body > div > button:hover{
+    background-color: var(--ddColor);
+}
+.vehicle_content_container > .vehicle_content button{
+    font-weight: 400;
+    font-size: 15px;
+    letter-spacing: 1px;
+}

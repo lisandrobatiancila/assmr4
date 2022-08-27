@@ -1,0 +1,33 @@
+.dashboard_container{
+    padding: 10px;
+}
+.dashboard_container > .dashboard_content > h3{
+    text-transform: capitalize;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.dashboard_thumbnail{
+    display: inline-block;
+    width: 50%;
+    border-radius: 5px;
+    border: 1px solid var(--ddColor);
+    cursor: pointer;
+}
+.dashboard_thumbnail:hover{
+    box-shadow: 0 5px 3px 3px rgba(0, 0, 0, 0.3);
+    transform: translateY(-5px);
+}
+.dashboard_thumbnail > .header{
+    padding: 10px;
+    text-align: center;
+    text-transform: capitalize;
+    letter-spacing: .5px;
+}
+.dashboard_thumbnail > .body{
+    padding: 10px;
+    border-top: 1px solid var(--ddColor);
+    border-bottom: 1px solid var(--ddColor);
+    text-transform: capitalize;
+    text-align: center;
+}
+

@@ -1,0 +1,34 @@
+:root{
+    --blackColor: #000;
+    --ddColor: #ddd;
+    --whiteColor: #fff;
+}
+.footer_container{
+    padding: 5rem 0;
+    background-color: var(--blackColor);
+    display: block;
+}
+.footer_container a{
+    font-weight: normal;
+    text-transform: capitalize;
+    color: var(--whiteColor);
+}
+.footer_first_content{
+    width: 100%;
+    overflow: auto;
+    padding: 12px 10px;
+}
+.footer_first_content > ul{
+    list-style-type: none;
+}
+.footer_first_content > ul li:first-child{
+    float: left
+}
+.footer_first_content > ul li{
+    float: right;
+    padding: 0 10px;
+}
+.footer_second_content{
+    padding: 15px 20px;
+    color: var(--whiteColor);
+}

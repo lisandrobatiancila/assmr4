@@ -1,0 +1,28 @@
+:root{
+
+}
+.profile_container{
+    position: relative;
+    width: inherit;
+    height: 150px;
+    text-align: center;
+    background-color: var(--sysColor);
+    padding-top: 10px;
+}
+.profile_avatar{
+    display: flex;
+    flex-direction: column;
+}
+.profile_avatar > img{
+    width: 100px;
+    height: 100px;
+    align-self: center;
+    cursor: pointer;
+}
+.profile_user_name{
+    position: absolute;
+    bottom: 0;
+    width: inherit;
+    background-color: var(--sidenavColor);
+    text-transform: capitalize;
+}

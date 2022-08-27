@@ -1,0 +1,109 @@
+.chat_room_container{
+    padding: 10px;
+    display: flex;
+}
+.chat_room{
+    width: 80%;
+    height: 500px;
+    display: inline-block;
+    position: relative;
+    border: 1px solid var(--ddColor);
+    background-color: var(--whiteColor);
+}
+.chat_room_header{
+    background-color: var(--chatRoomHeaderColor);
+    padding: 10px;
+}
+.chat_room_body{
+    position: relative;
+}
+.chat_room_actions{
+    width: 100%;
+    padding: 5px;
+    background-color: var(--ddColor);
+    position: absolute;
+    bottom: 0;
+}
+.chat_room_actions *{
+    display: inline-block;
+}
+.chat_room_actions > input[type='text']{
+    width: 90%;
+    border: 1px solid var(--ddColor);
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    padding: 10px;
+}
+.chat_room_actions > input[type='submit']{
+    width: 10%;
+    border: 1px solid var(--ddColor);
+    border-radius: 4px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    padding: 10px;
+    cursor: pointer;
+}
+.chat_room_actions > input[type='submit']:hover{
+    background-color: var(--chatRoomHeaderColor);
+}
+.chat_room > form .chat_room_header > h5{
+    font-weight: 100;
+    font-size: 24px;
+    text-transform: capitalize;
+}
+.chat_buddy{
+    width: 20%;
+    height: 500px;
+    display: inline-block;
+    background-color: #8b757583;
+}
+.chat_buddy > .chat_buddy_header{
+    background-color: var(--chatBuddyColor);
+    padding: 10px;
+}
+.chat_buddy_header > h5{
+    font-weight: 100;
+    font-size: 24px;
+    text-transform: capitalize;
+}
+.chatted_users_container{
+    padding: 10px;
+}
+.chatted_users_content{
+    display: flex;
+    background-color: var(--whiteColor);
+    padding: 5px;
+    position: relative;
+    border-radius: 4px;
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.3);
+    width: auto;
+}
+.chatted_users_content:not(:first-child) {
+    margin-top: 10px;
+}
+.chatted_users_content > img{
+    width: 50px;
+    height: 50px;
+}
+.chatted_users_content:hover{
+    background-color: var(--ddColor);
+    cursor: pointer;
+}
+.chatted_users_content:active{
+    transform: translateY(-3px);
+}
+.chatted_users_content > .message_container{
+    padding: 5px;
+    margin-left: 5px;
+}
+.chatted_users_content > .message_container > *{
+    display: block;
+}
+.chatted_users_content > .message_container > .message{
+    max-width: 100px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

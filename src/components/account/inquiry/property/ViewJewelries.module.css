@@ -1,0 +1,59 @@
+:root{
+    --ddColor: #ddd;
+}
+/* .jewelry_container{
+    padding: 5px;
+} */
+.jewelry_content > .jewelry_content_container{
+    width: 33.33%;
+    display: inline-block;
+    padding: 6px;
+}
+.jewelry_content_container > .jewelry_content{
+    border: 1px solid var(--ddColor);
+    padding: 3px;
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.5);
+}
+.jewelry_content_container > .jewelry_content > .jewelry_header{
+    padding: 3px;
+}
+.jewelry_content_container > .jewelry_content > .jewelry_header:hover{
+    box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+.jewelry_header > button{
+    width: 100%;
+    background-color: var(--sysColor);
+    text-transform: capitalize;
+}
+.jewelry_header img{
+    max-width: 100%;
+    height: auto;
+}
+.jewelry_content_container > .jewelry_header{
+    border: 1px solid var(--ddColor);
+}
+.jewelry_content_container > .jewelry_content > .jewelry_body{
+    display: block;
+    padding: 10px;
+}
+.jewelry_content > div:not(:first-child) > button{
+    width: 100%;
+    background-color: var(--whiteColor);
+    text-transform: capitalize;
+}
+.jewelry_content > div:not(:first-child) > button:hover{
+    background-color: var(--ddColor);
+}
+.jewelry > .jewelry_content button{
+    font-weight: 400;
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+.jewelry_content_container > .jewelry_content > .jewelry_body label{
+    display: block;
+    margin: 5px 0;
+}
+.jewelry_content_container > .jewelry_body > label::first-letter{
+    text-transform: capitalize;
+}

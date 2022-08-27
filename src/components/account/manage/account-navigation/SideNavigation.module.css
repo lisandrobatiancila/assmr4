@@ -1,0 +1,39 @@
+:root{
+    --whiteColor: #fff;
+}
+.sidenav_container{
+    position: fixed;
+    width: 200px;
+    height: 100%;
+    background-color: var(--sidenavColor);
+    border-top: 1px solid var(--sidenavColor);
+    left: 0;
+    margin-top: 80px;
+}
+.sidenav_container > nav > ul{
+    list-style-type: none;
+}
+.sidenav_container > nav ul li a{
+    color: var(--whiteColor);
+    padding: 12px 10px;
+    display: block;
+    text-transform: capitalize;
+}
+.sidenav_container > nav ul li a:hover{
+    background-color: var(--sysColor);
+    border-top: 1px solid var(--sidenavColor);
+}
+.active{
+    background-color: var(--sysColor);
+}
+.hidden_side_nav{
+    display: none;
+}
+.drop_down{
+    position: relative;
+}
+.drop_down_content{
+    display: none;
+    border: 1px solid var(--sysColor);
+    padding-left: 15px;
+}

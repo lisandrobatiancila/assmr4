@@ -1,0 +1,103 @@
+:root{
+    --whiteColor: #fff;
+    --blackColor: #000;
+    --headColor: #ec920b;
+}
+.assumption_container{
+    max-width: 700px;
+    padding: 10px;
+    margin: 0 auto;
+}
+.assumption_content_container{
+    background-color: var(--whiteColor);
+    border-radius: 5px;
+}
+.assumption_content_container > .assumption_header{
+    text-align: center;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    padding: 15px 10px;
+    border-bottom: 1px solid var(--ddColor);
+    background-color: var(--headColor);
+}
+.assumption_content_container > .assumption_header > h2 > span{
+    float: right;
+    cursor: pointer;
+}
+.assumption_content_container > .assumption_header > h2 > span:hover{
+    transform: translateY(-3px);
+}
+.assumption_content_container > .assumption_body{
+    padding: 10px;
+}
+.assumption_content_container > .assumption_body > label{
+    display: block;
+    text-transform: capitalize;
+    margin-left: 5px;
+}
+.assumption_content_container > .assumption_body > input, .fieldset > div > input{
+    width: 100%;
+    padding: 12px 10px;
+    border-radius: 4px;
+    border: 0;
+    border-bottom: 1px solid var(--ddColor);
+    outline: none;
+}
+.assumption_body > input[type="text"], .fieldset > div > input{
+    text-transform: capitalize;
+}
+.assumption_content_container > .assumption_body > input:focus, .fieldset > div input:focus{
+    border-bottom: 1px solid var(--headColor);
+}
+.assumption_body > .action_form{
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+.assumption_body > .fieldset{
+    box-shadow: none;
+}
+.assumption_body > .fieldset > div{
+    padding: 5px;
+    width: 100%;
+}
+.assumption_body > .fieldset > div > label{
+    text-transform: capitalize;
+    margin: 5px;
+}
+/* .assumption_body > .fieldset > div > input{
+    width: 100%;
+    border: 1px solid var(--ddColor);
+    padding: 12px 10px;
+    border-radius: 4px;
+} */
+.action_form > *{
+    width: 40%;
+    text-transform: capitalize;
+    margin: 10px 0 0 0;
+    display: inline-block;
+    padding: 12px 15px;
+    border: 1px solid #333;
+    border-radius: 3px;
+    margin-left: 3px;
+}
+.action_form > .btn_reset:hover{
+    background-color: var(--ddColor);
+    cursor: pointer;
+}
+.action_form > .btn_submit{
+    border: 1px solid var(--headColor);
+}
+.action_form > .btn_submit:hover{
+    background-color: var(--headColor);
+    cursor: pointer;
+}
+.action_form > *:active{
+    transform: translateY(-3px);
+}
+.divider{
+    width: 20px;
+    height: 2px;
+    background-color: var(--navColor);
+    margin-left: 5px;
+}
