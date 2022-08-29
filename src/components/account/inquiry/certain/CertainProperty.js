@@ -71,15 +71,16 @@ const CertainProperty = ()=>{
                 propertyType === "vehicles"?<CertainVehicle params = {{ propertyType, id, onOpenModal }} />
                     :
                 propertyType === "realestates"?
-                    <CertainRealestate params = {{ propertyType, id }} />
+                    <CertainRealestate params = {{ propertyType, id, onOpenModal }} />
                     :
-                propertyType === "jewelries"?<CertainJewelry params = {{ propertyType, id }} />
+                propertyType === "jewelries"?<CertainJewelry params = {{ propertyType, id, onOpenModal }} />
                     :"no content"
             }
             <div className={certainPropStyle.modal_container} ref={ modalRef } >
                 <AssumptionForm context = {{onCloseModal, setShowError, id}} />
             </div>
             <PopupError params = {{showError, setShowError }} />
+            <a href="https://www.flaticon.com/free-icons/send-mail" title="send mail icons">Send mail icons created by Vectorslab - Flaticon</a>
         </>
     )
 }

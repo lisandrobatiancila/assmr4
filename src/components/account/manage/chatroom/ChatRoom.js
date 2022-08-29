@@ -20,6 +20,7 @@ const ChatRoom = ()=> {
         const socket = io('http://localhost:1000')
         socket.emit('recentChatsWith', ({email: auth.auth.account_email}))
         socket.on('recentChatsWith', (messRec)=> {
+            console.log(messRec)
             setRecentChatWithUsers(messRec)
         })
     }, [])

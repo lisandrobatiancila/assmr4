@@ -15,6 +15,7 @@ const ViewJewelries = ({ context })=>{
     useEffect(()=>{
         noCredAPI.get('/properties/property-for-assumption/jewelries/NA')
             .then(response => {
+                console.log(response.data)
                 setJewelryLists(response.data)
                 setIsLoading(false)
             })
@@ -38,7 +39,7 @@ const ViewJewelries = ({ context })=>{
                                         <div>
                                             <div>
                                                 <LoadImage image = { `http://localhost:${SERVER_PORT}/${jewelryList.jrecords[0].images[0]}`}/>
-                                                <button onClick={ () => onOpenModal(jewelryList._id) }>assume</button>
+                                                <button onClick={ () => onOpenModal(jewelryList.jrecords[0].property_id) }>assume</button>
                                             </div>
                                             <div>
                                             <label>owner: { jewelryList.jrecords[0].jewelry_owner }</label>

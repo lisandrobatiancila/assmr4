@@ -23,7 +23,6 @@ const ViewRealestates = ({ context })=>{
             }
         )
             .then(response => {
-                console.log(response.data)
                 setRealestatesLists(response.data)
                 setIsLoading(false)
             })

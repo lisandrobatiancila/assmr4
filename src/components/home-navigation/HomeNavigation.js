@@ -13,7 +13,11 @@ const HomeNavigation = ()=>{
                 setAuth(null)
                 navigate('/', {replace: true})
             })
-            .catch(err => console.log(err))
+            .catch(err => {
+                console.log(err)
+                setAuth(null)
+                navigate('/', {replace: true})
+            })
     }
     return(
         <>

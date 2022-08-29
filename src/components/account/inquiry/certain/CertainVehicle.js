@@ -4,11 +4,14 @@ import Loading from '../../../actionMessages/Loading'
 import certainvehicleStyle from './CertainVehicle.module.css'
 import { useNavigate } from 'react-router-dom'
 import { SERVER_PORT } from '../../../../routes/api/apiURL'
+import send_mail_img from '../../../../assets/images/send-mail.png'
 
 const CertainVehicle = ({ params })=>{
     const { onOpenModal } = params
     const [isLoading, setIsLoading] = useState(true)
     const [certainVehicle, setCertainVehicle] = useState([])
+    const [onMessage, setOnMessage] = useState(false)
+    const [messageBox, setMessageBox] = useState('')
     const [mainImage, setMainImage] = useState({
         firstImage: '',
     })
@@ -28,6 +31,11 @@ const CertainVehicle = ({ params })=>{
                 setIsLoading(false)
             })
     }, [])
+
+    const sendMessage = (propertyID) => {
+        console.log(propertyID)
+        console.log(messageBox)
+    }
 
     return(
         <>
@@ -74,6 +82,27 @@ const CertainVehicle = ({ params })=>{
                                         <label>installmentduration: { certainVehicle.vehicle_installmentduration }</label>
                                         <label>delinquent: { certainVehicle.delinquent }</label>
                                         <label>descriptions: { certainVehicle.description }</label>
+                                        <div className={certainvehicleStyle.send_message}
+                                            title={`send message to ${certainVehicle.vehicle_owner}`}
+                                            onClick = {()=> setOnMessage(!onMessage)}>
+                                            {onMessage?<span>close</span>:""}
+                                            <img src={send_mail_img} width="30" height="30"/>
+                                        </div>
+                                        {
+                                            onMessage?
+                                            <>
+                                                <textarea
+                                                    style={{height: "100px", marginTop: "5px", marginBottom: "5px", minHeight: "200px"}}
+                                                    placeholder="send message..."
+                                                    value={messageBox}
+                                                    onChange = {(e)=> setMessageBox(e.target.value)}>
+                                                
+                                                </textarea>
+                                                <button className={certainvehicleStyle.send_message_button}
+                                                    onClick = {()=> sendMessage(certainVehicle.property_id)} >send</button>
+                                            </>
+                                            :""
+                                        }
                                         <button className={ certainvehicleStyle.btn_assume }
                                             onClick= { ()=> onOpenModal(certainVehicle.property_id) }>assume</button>
                                         <button className={ certainvehicleStyle.btn_back }

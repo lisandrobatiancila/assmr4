@@ -78,88 +78,88 @@ const AssumptionForm = ({ context })=>{
                     </div>
                     <div className={ assumptionfromStyle.assumption_body }>
                         <label>firstname
-                            {error?.fn?<Messages type="error" message="empty fields" />:""}
+                            {error?.firstname_err?<Messages type="error" message="empty fields" />:""}
                         </label>
                         <div className={ assumptionfromStyle.divider }></div>
                         <input type="text" placeholder="Firstname" value={ firstname?firstname:'' } 
                             onChange = { (e)=> {
-                                setError({...error, fn: false})
+                                setError({...error, firstname_err: false})
                                 setFirstname(e.target.value)
                             }} />
                         <label>middlename
-                            {error?.mn?<Messages type="error" message="empty fields" />:""}
+                            {error?.middlename_err?<Messages type="error" message="empty fields" />:""}
                         </label>
                         <div className={ assumptionfromStyle.divider }></div>
                         <input type="text" placeholder="Middlename" value={ middlename?middlename:'' } 
                             onChange = { (e)=> {
-                                setError({...error, mn: false})
+                                setError({...error, middlename_err: false})
                                 setMiddlename(e.target.value)
                             }} />
                         <label>lastname
-                            {error?.ln?<Messages type="error" message="empty fields" />:""}
+                            {error?.lastname_err?<Messages type="error" message="empty fields" />:""}
                         </label>
                         <div className={ assumptionfromStyle.divider }></div>
                         <input type="text" placeholder="Lastname" value={ lastname?lastname:'' } 
                             onChange = { (e)=> {
-                                setError({...error, ln: false})
+                                setError({...error, lastname_err: false})
                                 setLastname(e.target.value)
                             }} />
                         <label>contactno
-                            {error?.con?<Messages type="error" message="empty fields" />:""}
+                            {error?.contactno_err?<Messages type="error" message="empty fields" />:""}
                         </label>
                         <div className={ assumptionfromStyle.divider }></div>
                         <input type="text" placeholder="Contactno" value={ contactno?contactno:'' } 
                             onChange = { (e) => {
-                                setError({...error, con: false})
+                                setError({...error, contactno_err: false})
                                 setContactno(e.target.value)
                             }} />
                         <label>work
-                            {error?.wrk?<Messages type="error" message="empty fields" />:""}
+                            {error?.work_err?<Messages type="error" message="empty fields" />:""}
                         </label>
                         <div className={ assumptionfromStyle.divider }></div>
                         <input type="text" placeholder="Work" value={ work } 
                             onChange = { (e) => {
-                                setError({...error, wrk: false})
+                                setError({...error, work_err: false})
                                 setWork(e.target.value)
                             }} />
                         <label>income
-                            {error?.inc?<Messages type="error" message="empty fields / PHP only" />:""}
+                            {error?.income_err?<Messages type="error" message="empty fields / PHP only" />:""}
                         </label>
                         <div className={ assumptionfromStyle.divider }></div>
                         <input type="text" placeholder="Income" value={ income } 
                            onChange = { (e)=> {
-                               setError({...error, inc: false})
+                               setError({...error, income_err: false})
                                setIncome(e.target.value)
                            }} />
                         <fieldset className={ assumptionfromStyle.fieldset }>
                             <legend>address</legend>
                             <div>
                                 <label>city
-                                    {error?.cty?<Messages type="error" message="empty fields" />:""}
+                                    {error?.city_err?<Messages type="error" message="empty fields" />:""}
                                 </label>
                                 <input type="text" placeholder="city" value={ city?city:'' } 
                                     onChange = { (e)=> {
-                                        setError({...error, cty: false})
+                                        setError({...error, city_err: false})
                                         setCity(e.target.value)
                                     }} />
                             </div>
                             <div>
                                 <label>province
-                                    {error?.prvnce?<Messages type="error" message="empty fields" />:""}
+                                    {error?.province_err?<Messages type="error" message="empty fields" />:""}
                                 </label>
                                 <input type="text" placeholder="Province" value = { province?province:'' } 
                                     onChange = {(e)=> {
-                                        setError({...error, prvnce: false})
+                                        setError({...error, province_err: false})
                                         setProvince(e.target.value)
                                     }} />
                             </div>
                             <div>
                                 <label>barangay
-                                    {error?.brgy?<Messages type="error" message="empty fields" />:""}
+                                    {error?.barangay_err?<Messages type="error" message="empty fields" />:""}
                                 </label>
                                 <input type="text" placeholder="barangay" value={ barangay?barangay:'' } 
                                     onChange = {(e) => {
-                                        setError({...error, brgy: false})
+                                        setError({...error, barangay_err: false})
                                         setBarangay(e.target.value)
                                     }} />
                             </div>

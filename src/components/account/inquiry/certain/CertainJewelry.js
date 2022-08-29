@@ -3,8 +3,10 @@ import { useState, useEffect } from 'react'
 import { noCredAPI } from '../../../../routes/api/apiURL'
 import { useNavigate } from 'react-router-dom'
 import certainjewelryStyle from './CertainJewelry.module.css'
+import { SERVER_PORT } from '../../../../routes/api/apiURL'
 
 const CertainJewelry = ({ params })=>{
+    const { onOpenModal } = params
     const [isLoading, setIsLoading] = useState(true)
     const [certainJewelry, setCertainJewelry] = useState({})
     const [mainImage, setMainImage] = useState({
@@ -13,12 +15,12 @@ const CertainJewelry = ({ params })=>{
     const navigate = useNavigate()
 
     useEffect(() =>{
-        noCredAPI.get(`account/users/properties/inquiry/certain/${params.propertyType}/${params.id}`)
+        noCredAPI.get(`/properties/certain-property/${params.propertyType.replace('ies', 'y')}/${params.id}`)
             .then(response => {
-                console.log(response)
+                console.log(response.data)
                 setCertainJewelry(response.data)
                 setMainImage({
-                    firstimage: response.data.imageLists.jewelries[0]
+                    firstimage: response.data.images[0]
                 })
                 setIsLoading(false)
             })
@@ -40,15 +42,15 @@ const CertainJewelry = ({ params })=>{
                         <legend>jewelry</legend>
                         <div className={ certainjewelryStyle.cj_content_container }>
                             <div className={ certainjewelryStyle.cj_content_left }>
-                                <img src={ `http://localhost:${mainImage.firstimage}` } />
+                                <img src={ `http://localhost:${SERVER_PORT}/${mainImage.firstimage}` } />
                                 <div className={ certainjewelryStyle.supporting_image }>
                                     {
-                                        certainJewelry.imageLists.jewelries.map((jewelry, i) => {
+                                        certainJewelry.images.map((jewelry, i) => {
                                             if(i != 0)
                                                 return <div key={i} className={ certainjewelryStyle.tooltip}>
-                                                    <img key={i} src={ `http://localhost:${jewelry}`}
+                                                    <img key={i} src={ `http://localhost:${SERVER_PORT}/${jewelry}`}
                                                         onClick={() => {
-                                                            certainJewelry.imageLists.jewelries[i] = mainImage.firstimage
+                                                            certainJewelry.images[i] = mainImage.firstimage
                                                             setMainImage({
                                                                 firstimage: jewelry
                                                             })
@@ -61,15 +63,16 @@ const CertainJewelry = ({ params })=>{
                                 </div>
                             </div>
                             <div className={ certainjewelryStyle.cj_content_right }>
-                                <label>owner: { certainJewelry.jewelryOwner }</label>
-                                <label>jewelry name: { certainJewelry.jewelryName }</label>
-                                <label>model: { certainJewelry.jewelryModel }</label>
-                                <label>location: { certainJewelry.jewelryLocation }</label>
-                                <label>installmentpaid: { certainJewelry.jewelryInstallmentpaid }</label>
-                                <label>installmentduration: { certainJewelry.jewelryInstallmentduration }</label>
-                                <label>delinquent: { certainJewelry.jewelryDelinquent }</label>
-                                <label>descriptions: { certainJewelry.jewelryDescriptions }</label>
-                                <button className={ certainjewelryStyle.btn_assume }>assume</button>
+                                <label>owner: { certainJewelry.jewelry_owner }</label>
+                                <label>jewelry name: { certainJewelry.jewelry_name }</label>
+                                <label>model: { certainJewelry.jewelry_type }</label>
+                                <label>location: { certainJewelry.jewelry_location }</label>
+                                <label>installmentpaid: { certainJewelry.jewelry_installmentpaid }</label>
+                                <label>installmentduration: { certainJewelry.jewelry_installmentduration }</label>
+                                <label>delinquent: { certainJewelry.jewelry_delinquent }</label>
+                                <label>descriptions: { certainJewelry.jewelry_description }</label>
+                                <button className={ certainjewelryStyle.btn_assume }
+                                    onClick = { ()=> onOpenModal(certainJewelry.property_id) }>assume</button>
                                 <button className={ certainjewelryStyle.btn_back }
                                     onClick={ ()=> navigate(-1)}>back</button>
                             </div>

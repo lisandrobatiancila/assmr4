@@ -3,8 +3,10 @@ import { useState, useRef, useEffect } from 'react'
 import Messages from '../../actionMessages/Messages'
 import { noCredAPI } from '../../../routes/api/apiURL'
 import Error from '../../actionMessages/Error'
+import { useAuth } from '../../../hooks/context/useAuth'
 
 const Vehicle = ()=>{
+    const auth = useAuth()
     const [vehicleOwner, setVehicleOwner] = useState('')
     const [vehicleContactno, setVehicleContactno] = useState('')
     const [vehicleLocation, setVehicleLocation] = useState('')
@@ -18,6 +20,30 @@ const Vehicle = ()=>{
     const [errTypes, setErrTypes] = useState(null)
     const [isChanged, setIsChanged] = useState(false)
 
+    useEffect(() => {
+        noCredAPI.get(
+            `/main/post/active-user-info`,
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${auth?.auth?.accessToken}`
+                }
+            }
+        )
+        .then(response => {
+            const fullname = `${response?.data?.lastname}, ${response?.data?.firstname} ${response?.data?.middlename[0]}`
+            const contactno = response?.data?.contactno
+            const location = `${response?.data?.province}, ${response?.data?.municipality}, ${response?.data?.barangay}`
+
+            setVehicleOwner(fullname)
+            setVehicleContactno(contactno)
+            setVehicleLocation(location)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    }, [])
+    
     const submitVehicleProperty = (e)=>{
         e.preventDefault()
 
@@ -48,11 +74,18 @@ const Vehicle = ()=>{
                 withCredentials: true
             }
         ).then(response => {
-            console.log(response)
-            setErrTypes(response.data)
-            setFiles(null)
             setIsChanged(true)
-            form = null
+            setErrTypes(response.data)
+            if(!response?.data?.has_error){
+                setVehicleName('')
+                setVehicleModel('')
+                setVehicleInstallmentpaid('')
+                setVehicleInstallmentduration('')
+                setVehicleDelinquent('')
+                setVehicleDescription('')
+                setFiles(null)
+                form = null
+            }
         })
         .catch(err => console.log(err))
 
@@ -71,8 +104,8 @@ const Vehicle = ()=>{
     return(
         <>
             <section className={ vehicleStyle.vehicle_container }>
-                { /successfull!/.test(errTypes?.message) ? 
-                    <div style={{marginBottom: "20px"}}><Error errorMessage={{message: errTypes.has_error, color: "#00a824" }} /></div>
+                { /successfull/.test(errTypes?.message) ? 
+                    <div style={{marginBottom: "20px"}}><Error errorMessage={{message: errTypes.message, color: "#00a824" }} /></div>
                     : ""}
                 <form onSubmit = { submitVehicleProperty }>
                     <div className={ vehicleStyle.vehicle_content }>
@@ -84,7 +117,7 @@ const Vehicle = ()=>{
                                 setErrTypes({...errTypes, vo: false})
                                 setVehicleOwner(e.target.value)
                            } }
-                           placeholder="vehicle owner" />
+                           placeholder="vehicle owner" disabled />
                     </div>
                     <div className={ vehicleStyle.vehicle_content }>
                         <label>contactno. #
@@ -95,11 +128,11 @@ const Vehicle = ()=>{
                                 setErrTypes({...errTypes, vc: false})
                                 setVehicleContactno(e.target.value)
                             } }
-                            placeholder="contactno. #" />
+                            placeholder="contactno. #" disabled />
                     </div>
                     
                     <div className={ vehicleStyle.vehicle_content }>
-                        <label>vehicle location
+                        <label>location
                             {errTypes?.vl?<Messages type="error" message ="empty fields" />:""}
                         </label>
                         <input type="text" name="vehicleLocation" value={ vehicleLocation }
@@ -107,7 +140,7 @@ const Vehicle = ()=>{
                                 setErrTypes({...errTypes, vl: false})
                                 setVehicleLocation(e.target.value)
                             } }
-                            placeholder="vehicle location" />
+                            placeholder="vehicle location" disabled />
                     </div>
                     <div className={ vehicleStyle.vehicle_content }>
                         <label>vehicle name
@@ -121,7 +154,7 @@ const Vehicle = ()=>{
                             placeholder="vehicle name" />
                     </div>
                     <div className={ vehicleStyle.vehicle_content }>
-                        <label>vehicle model
+                        <label>vehicle model {errTypes?.vm}
                             {errTypes?.vm?<Messages type="error" message ="empty fields" />:""}
                         </label>
                         <input type="text" name="vehicleModel" value={ vehicleModel }
@@ -188,7 +221,7 @@ const Vehicle = ()=>{
                             } } />
                     </div>
                     <div className={ vehicleStyle.vehicle_buttons }>
-                        <button>reset</button>
+                        <button type='reset'>reset</button>
                         <button>submit</button>
                     </div>
                 </form>

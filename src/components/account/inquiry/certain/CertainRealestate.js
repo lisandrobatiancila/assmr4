@@ -6,6 +6,7 @@ import { noCredAPI } from '../../../../routes/api/apiURL'
 import { SERVER_PORT } from '../../../../routes/api/apiURL'
 
 const CertainRealestate = ({ params })=>{
+    const { onOpenModal } = params
     const [isLoading, setIsLoading] = useState(true)
     const [certainRealestate, setCertainRealestate] = useState({})
     const [mainImage, setMainImage] = useState({
@@ -19,9 +20,9 @@ const CertainRealestate = ({ params })=>{
                 console.log(response.data)
                 setCertainRealestate(response.data)
                 setMainImage({
-                    firstImage: response.data.realestate_type === "house and lot"?response.data.info.imageLists.hal[0]
-                        :response.data.realestate_type === "house"?response.data.info.imageLists.houses[0]
-                        :`http://localhost:${SERVER_PORT}/${response.data.images.images[0]}`
+                    firstImage: response.data.realestate_type === "house and lot"?response.data.images.images[0]
+                        :response.data.realestate_type === "house"?response.data.images.images[0]
+                        :response.data.images.images[0]
                 })
                 setIsLoading(false)
                 console.log(mainImage)
@@ -48,17 +49,17 @@ const CertainRealestate = ({ params })=>{
                                 <img src={ 
                                     certainRealestate.realestateType === "house"?`http://localhost:${mainImage.firstImage}`:
                                     certainRealestate.realestateType === "house and lot"?`http://localhost:${mainImage.firstImage}`
-                                    :`http://localhost:${mainImage.firstImage}`
+                                    :`http://localhost:${SERVER_PORT}/${mainImage.firstImage}`
                                  } />
                                 <div className={ certainrealestateStyle.supporting_image }>
                                     {
                                         certainRealestate.realestate_type === "house"?
-                                            certainRealestate.info.imageLists.houses.map((house, i) =>{
+                                            certainRealestate.images.images.map((house, i) =>{
                                                 if(i != 0)
                                                     return <div key={i} className={ certainrealestateStyle.tooltip}>
-                                                        <img key={i} src={ `http://localhost:${house}` } 
+                                                        <img key={i} src={ `http://localhost:${SERVER_PORT}/${house}` } 
                                                             onClick={() =>{
-                                                                certainRealestate.info.imageLists.houses[i] = mainImage.firstImage
+                                                                certainRealestate.images.images[i] = mainImage.firstImage
                                                                 setMainImage({
                                                                     firstImage: house
                                                                 })
@@ -69,12 +70,12 @@ const CertainRealestate = ({ params })=>{
                                             })
                                         :
                                         certainRealestate.realestate_type === "house and lot"?
-                                            certainRealestate.info.imageLists.hal.map((hal, i) =>{
+                                            certainRealestate.images.images.map((hal, i) =>{
                                                 if(i != 0)
                                                     return <div key={i} className={ certainrealestateStyle.tooltip}>
-                                                        <img key={i} src={ `http://localhost:${hal}` } 
+                                                        <img key={i} src={ `http://localhost:${SERVER_PORT}/${hal}` } 
                                                             id={`img${i}`} onClick={()=> {
-                                                                certainRealestate.info.imageLists.hal[i] = mainImage.firstImage
+                                                                certainRealestate.images.images[i] = mainImage.firstImage
                                                                 setMainImage({
                                                                     firstImage: hal
                                                                 })
@@ -110,7 +111,8 @@ const CertainRealestate = ({ params })=>{
                                 <label>installmentduration: { certainRealestate.realestate_installmentduration }</label>
                                 <label>delinquent: { certainRealestate.realestate_delinquent }</label>
                                 <label>descriptions: { certainRealestate.realestate_description }</label>
-                                <button className={ certainrealestateStyle.btn_assume }>assume</button>
+                                <button className={ certainrealestateStyle.btn_assume }
+                                    onClick = { ()=> onOpenModal(certainRealestate.property_id) }>assume</button>
                                 <button className={ certainrealestateStyle.btn_back }
                                     onClick={ ()=> navigate(-1)}>back</button>
                             </div>
