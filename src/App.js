@@ -48,8 +48,8 @@ function App() {
         <Route element = { <ManageAccount /> }>
           <Route path='/account/manage' element={ <DashBoard /> } />
           <Route path='/account/manage/properties' element={ <Properties /> } >
-          <Route path='/account/manage/properties/my-properties' element={ <MyProperties /> } />
-          <Route path='/account/manage/properties/assumed-properties' element={ <AssumedProperties /> } />
+            <Route path='/account/manage/properties/my-properties' element={ <MyProperties /> } />
+            <Route path='/account/manage/properties/assumed-properties' element={ <AssumedProperties /> } />
           </Route>
           <Route path='/account/manage/chatroom' element={ <ChatRoom /> } />
           <Route path='/account/manage/feedbacks' element= { <FeedBack/> } />

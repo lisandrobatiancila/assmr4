@@ -9,7 +9,7 @@ export const noCredAPI = axios.create({
 
 export const withCredAPI = axios.create({
     baseURL: BASE_URL,
-    headers: {"Content-Type": "application/json"},
+    headers: {"Accept": "application/json"},
     withCredentials: true
 })
 

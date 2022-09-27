@@ -4,7 +4,6 @@ import { useAuth } from '../../../../hooks/context/useAuth'
 import style from './ChatRoom.module.css'
 import avatar from '../../../../staticData/images/user.png'
 import ChatMessage from '../../wrapper/ChatMessage'
-import axios from 'axios'
 import { io } from 'socket.io-client'
 
 const ChatRoom = ()=> {
@@ -14,10 +13,11 @@ const ChatRoom = ()=> {
     const [receiverID, setReceiverID] = useState('')
     const [senderID, setSenderID] = useState('')
     const [ourMessages, setOurMessages] = useState([])
+    const socket = io('http://localhost:1000')
 
     useEffect(() =>{
         const controller = new AbortController()
-        const socket = io('http://localhost:1000')
+        
         socket.emit('recentChatsWith', ({email: auth.auth.account_email}))
         socket.on('recentChatsWith', (messRec)=> {
             console.log(messRec)
@@ -49,7 +49,21 @@ const ChatRoom = ()=> {
         //     .catch(err => {
         //         console.log(err)
         //     })
+        const messagePayloads = {
+            message: composedMessage,
+            receiverID,
+            active_user: auth?.auth?.account_email
+        }
+        if(!/[^\s]/.test(receiverID) || !/[^\s]/.test(composedMessage))
+            return
+        socket.emit('send-message', (messagePayloads))
+        socket.on('send-message', ({for_chatts_box, current_I_chatt_with}) => {
+            setRecentChatWithUsers(current_I_chatt_with)
+            setOurMessages(for_chatts_box)
+            setComposedMessage('')
+        })
     }
+    
     return(
         <>
             <div className={ style.chat_room_container }>
@@ -85,7 +99,11 @@ const ChatRoom = ()=> {
                                             onClick={ ()=>iwantToChatWith(recentchat) }>
                                             <img src={ avatar } />
                                             <div className={ style.message_container }>
-                                                <p>{recentchat.message_sender}</p>
+                                                <p>
+                                                    { auth?.auth?.account_email === recentchat.sender_email?recentchat.message_receiver
+                                                        :auth?.auth?.account_email === recentchat.receiver_email?recentchat.message_sender:""
+                                                    }
+                                                </p>
                                                 <small className={ style.message }>{ recentchat.message }</small>
                                                 <small>{ recentchat.textType }</small>
                                                 <small><i>{ recentchat.message_date }</i></small>

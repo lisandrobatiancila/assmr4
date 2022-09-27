@@ -5,13 +5,17 @@ import certainvehicleStyle from './CertainVehicle.module.css'
 import { useNavigate } from 'react-router-dom'
 import { SERVER_PORT } from '../../../../routes/api/apiURL'
 import send_mail_img from '../../../../assets/images/send-mail.png'
+import { useAuth } from '../../../../hooks/context/useAuth'
 
 const CertainVehicle = ({ params })=>{
     const { onOpenModal } = params
+    const auth = useAuth()
     const [isLoading, setIsLoading] = useState(true)
     const [certainVehicle, setCertainVehicle] = useState([])
     const [onMessage, setOnMessage] = useState(false)
     const [messageBox, setMessageBox] = useState('')
+    const [messageResponse, setMessageResponse] = useState(null)
+    var TO = null
     const [mainImage, setMainImage] = useState({
         firstImage: '',
     })
@@ -33,8 +37,30 @@ const CertainVehicle = ({ params })=>{
     }, [])
 
     const sendMessage = (propertyID) => {
-        console.log(propertyID)
-        console.log(messageBox)
+        const controller = new AbortController()
+        withCredAPI.post(
+            '/main/chatrooms/user-send-message-through-properties',
+            {
+                propertyID,
+                message: messageBox
+            },
+            {
+                signal: controller.signal,
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${auth?.auth?.accessToken}`
+                }
+            }
+        ).then(response => {
+            setMessageResponse(response?.data)
+            setMessageBox('')
+            TO = setTimeout(() => {
+                setMessageResponse('')
+                clearInterval(TO)
+            }, 2500)
+        }).catch(err => {
+            setMessageResponse(err)
+        })
     }
 
     return(
@@ -98,8 +124,13 @@ const CertainVehicle = ({ params })=>{
                                                     onChange = {(e)=> setMessageBox(e.target.value)}>
                                                 
                                                 </textarea>
-                                                <button className={certainvehicleStyle.send_message_button}
-                                                    onClick = {()=> sendMessage(certainVehicle.property_id)} >send</button>
+                                                <div className={certainvehicleStyle.response_box}>
+                                                    <button className={certainvehicleStyle.send_message_button}
+                                                        onClick = {()=> sendMessage(certainVehicle.property_id)} >send </button>
+                                                    <span style={{color: messageResponse?.has_error?'#ff602b':'#ec920b'}}>
+                                                        { `${messageResponse?.message?messageResponse.message:""}` }
+                                                    </span>
+                                                </div>
                                             </>
                                             :""
                                         }

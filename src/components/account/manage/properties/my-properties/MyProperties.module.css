@@ -1,0 +1,53 @@
+.posted_prop_title {
+    width: 500px;
+    padding: 15px 12px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    background-color: #fff;
+    margin: 0 auto;
+    text-align: center;
+    text-transform: capitalize;
+}
+.current_view_prop {
+    width: 500px;
+    margin: 5px auto 0 auto;
+}
+.current_view_prop *{
+    display: inline-block;
+}
+.vehicles_prop {
+    width: 33%;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    padding: 12px 15px;
+    text-align: center;
+    cursor: pointer;
+    text-transform: capitalize;
+}
+.realestates_prop {
+    width: 33%;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    padding: 12px 15px;
+    text-align: center;
+    cursor: pointer;
+    text-transform: capitalize;
+}
+.jewelries_prop {
+    width: 33%;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    padding: 12px 15px;
+    text-align: center;
+    cursor: pointer;
+    text-transform: capitalize;
+}
+.vehicles_prop:hover, .realestates_prop:hover, .jewelries_prop:hover {
+    background-color: #ddd;
+}
+.active {
+    background-color: var(--sysColor) !important;
+}
+.display_properties {
+    padding: 0 10px;
+}

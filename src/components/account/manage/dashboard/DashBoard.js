@@ -6,9 +6,11 @@ import Chart from 'chart.js/auto'
 import { dashBoardBar } from '../../../../module/chartModule'
 
 const DashBoard = ()=>{
-    const [postedProperties, setPostedProperties] = useState({})
-    const [assumedProperties, setAssumedProperties] = useState({})
+    const [postedProperties, setPostedProperties] = useState("")
+    const [assumedProperties, setAssumedProperties] = useState("")
+    const [pieChart, setPieChart] = useState(null)
     const navigate = useNavigate()
+    var chart = null
 
     useEffect(() => {
         const controller = new AbortController()
@@ -19,7 +21,8 @@ const DashBoard = ()=>{
             }
         )
             .then(response => {
-                setPostedProperties(response.data)
+                setPostedProperties(response.data.totalPosted)
+                setAssumedProperties(response.data.totalAssumed)
             })
             .catch(err => {
                 console.log(err)
@@ -36,13 +39,45 @@ const DashBoard = ()=>{
 
         withCredAPI.get(`/main/dashboard/total-of-assumed-and-posted-properties/${'data-inquiry'}`)
             .then(response => {
-                // console.log(response)
-                var chart = null
-                if(!chart)
+                console.log(response)
+                setPieChart(response.data)
+                var data = {}
+                const dsets = [] 
+                var labels = []
+
+                response.data.map(pieData => {
+                    dsets.push(pieData.total_posted)
+                    labels.push(pieData.key)
+                })
+
+                data = {
+                    datasets: [
+                        {
+                            data: dsets,
+                            backgroundColor: [
+                                'rgb(255, 99, 132)',
+                                'rgb(54, 162, 235)',
+                                'rgb(255, 205, 86)'
+                            ],
+                        }
+                    ],
+                    labels: labels
+                }
+
+                if(!chart){
                     chart = new Chart(ctx, {
-                        type: 'bar',
-                        data: dashBoardBar(response.data)
+                        type: 'doughnut',
+                        data
                     })
+                }
+                //     chart = new Chart(ctx, {
+                //         type: 'bar',
+                //         data: dashBoardBar(response.data)
+                //     })
+                // chart = new Chart(ctx, {
+                //     type: 'doughnut',
+                //     data
+                // })
             })
             .catch(err => {
                 console.log(err)
@@ -60,7 +95,7 @@ const DashBoard = ()=>{
                             </h3>
                         </div>
                         <div className={ style.body }>
-                            <p>total posted: { postedProperties.totalPosted }</p>
+                            <p>total posted: { postedProperties?postedProperties:"0" }</p>
                         </div>
                     </div>
                     <div className={ style.dashboard_thumbnail }>
@@ -68,11 +103,42 @@ const DashBoard = ()=>{
                             <h3>assumed properties</h3>
                         </div>
                         <div className={ style.body }>
-                            <p>total assumed: { 'not coded yet '}</p>
+                            <p>total assumed: { assumedProperties?assumedProperties:"0"} </p> 
+                            {/* { 'not coded yet '} */}
                         </div>
                     </div>
                 </section>
-                <canvas id="myChart" width="120" height="50"></canvas>
+                <div className={ style.canvas_container }>
+                    <div className={ style.canvas_content_left }>
+                        <canvas id="myChart" width="20px"  height="20px"></canvas>
+                    </div>
+                    <div className={ pieChart?style.canvas_content_right:"" }>
+                        {
+                            pieChart? pieChart.map(chart =>
+                                <div key={chart.key} className= { style.right_content_container }>
+                                    <div className= { style.right_content_header }>
+                                        <h4>{ chart.key }</h4>
+                                    </div>
+                                    <div className={ style.right_content_body }>
+                                        <div className={ style.left_body_content}>
+                                            <small>total posted property</small>
+                                            <p>
+                                                { chart.total_posted }
+                                            </p>
+                                        </div>
+                                        <div className={ style.right_body_content }>
+                                            <small>total assumer</small>
+                                            <p>
+                                                { chart.total_assumer }
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            )
+                            :""
+                        }
+                    </div>
+                </div>
             </main>
         </>
     )

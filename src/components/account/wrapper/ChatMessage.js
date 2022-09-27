@@ -1,10 +1,13 @@
 import style from './ChatMessage.module.css'
+import { useAuth } from '../../../hooks/context/useAuth'
 
 const ChatMessage = ({ message, avatar }) =>{
+    const auth = useAuth()
+
     return (
         <>
             {
-                message?.status === 'active'? //means go right
+                auth?.auth?.account_email === message.sender_email? //means go right
                     <div className={ style.chat_message_right_container }>
                         <div className={ style.chat_message_right_content }>
                             <img src={ avatar } width={"50px"} height={"50px"} className={ style.avatar_active } />
