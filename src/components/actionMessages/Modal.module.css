@@ -1,0 +1,56 @@
+.modal_container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, .8);
+    padding: 100px;
+    z-index: 100;
+}
+.modal_card {
+    background: var(--whiteColor);
+    border: 1px solid var(--ddColor);
+    border-radius: 3px;
+}
+.modal_content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.close_modal {
+    display: none;
+}
+.open_modal {
+    display: block;
+}
+.modal_card > button {
+    float: right;
+    font-size: 20px;
+}
+.modal_body {
+    text-align: center;
+}
+.modal_body h3 {
+    text-transform: capitalize;
+}
+.modal_body button {
+    width: 50%;
+    border-radius: 100px;
+    margin: 5px;
+}
+.modal_body button:nth-child(odd):hover {
+    background-color: #fc4e2f;
+    color: var(--whiteColor);
+    font-weight: 500;
+    box-shadow: 0 5px 3px 0 var(--ddColor);
+}
+.modal_body button:nth-child(even):hover {
+    background-color: #05e3a8;
+    color: var(--whiteColor);
+    font-weight: 500;
+    box-shadow: 0 5px 3px 0 var(--ddColor);
+}
+.modal_body button:active {
+    transform: translateY(-3px);
+}

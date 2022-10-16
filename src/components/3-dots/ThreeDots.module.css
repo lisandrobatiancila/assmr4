@@ -1,0 +1,45 @@
+.three_dots_container {
+    float: right;
+    position: absolute;
+    right: 0;
+    top: 0;
+    cursor: pointer;
+}
+.three_dots_header {
+    width: 25px;
+    height: 25px;
+    margin-top: 5px;
+    position: absolute;
+    text-align: center;
+    right: 0;
+}
+.three_dots_header > .dots_1, .three_dots_header > .dots_2, .three_dots_header > .dots_3 {
+    width: 4px;
+    height: 4px;
+    background-color: #000;
+    margin-top: 2px;
+    border-radius: 50%;
+    margin-left: 13px;
+}
+.three_dots_pop_up {
+    width: 100px;
+    margin-top: 15px;
+    background-color: var(--whiteColor);    
+    border: 1px solid var(--ddColor);
+    display: none;
+}
+.three_dots_pop_up > div {
+    padding: 5px;
+    text-align: center;
+}
+.three_dots_pop_up a {
+    display: block;
+    text-transform: capitalize;
+}
+.three_dots_container:hover .three_dots_pop_up {
+    display: block;
+}
+.three_dots_pop_up > div:hover {
+    background-color: var(--ddColor);
+    cursor: pointer;
+}

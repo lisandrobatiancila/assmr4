@@ -3,7 +3,7 @@
     width: 500px;
     margin: 0 auto;
     text-align: center;
-    top: 20px
+    top: 20px;
 }
 .error_container ::first-letter{
     text-transform: capitalize;

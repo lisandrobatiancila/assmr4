@@ -12,6 +12,7 @@ import PersistLogin from './components/persist/PersistLogin';
 import ManageAccount from './components/account/manage/Home'
 import Properties from './components/account/manage/properties/Properties';
 import MyProperties from './components/account/manage/properties/my-properties/MyProperties';
+import MyCertainProperties from './components/account/manage/properties/my-properties/MyCertainProperties';
 import AssumedProperties from './components/account/manage/properties/assumed-properties/AssumedProperties'
 import ChatRoom from './components/account/manage/chatroom/ChatRoom';
 import FeedBack from './components/account/manage/feedbacks/FeedBack';
@@ -49,6 +50,7 @@ function App() {
           <Route path='/account/manage' element={ <DashBoard /> } />
           <Route path='/account/manage/properties' element={ <Properties /> } >
             <Route path='/account/manage/properties/my-properties' element={ <MyProperties /> } />
+            <Route path='/account/manage/properties/my-properties/:actionType/:type/:id' element = { <MyCertainProperties /> } />
             <Route path='/account/manage/properties/assumed-properties' element={ <AssumedProperties /> } />
           </Route>
           <Route path='/account/manage/chatroom' element={ <ChatRoom /> } />

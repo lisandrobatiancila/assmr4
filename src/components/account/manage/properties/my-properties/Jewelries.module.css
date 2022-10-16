@@ -1,4 +1,4 @@
-.vehicle_container {
+.jewelry_container {
     width: 33%;
     border: 1px solid #ddd;
     border-radius: 3px;
@@ -6,14 +6,14 @@
     margin-left: 3px;
     position: relative;
 }
-.vehicle_body {
+.jewelry_body {
     display: block;
     padding: 5px 10px;
 }
-.vehicle_header {
+.jewelry_header {
     display: block;
 }
-.vehicle_header > img {
+.jewelry_header > img {
     width: 100px;
     height: 100px;
 }
